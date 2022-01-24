@@ -5,147 +5,67 @@
 ### Технологии:
 [![Python](https://img.shields.io/badge/-Python-464646?style=flat-square&logo=Python)](https://www.python.org/) [![Django](https://img.shields.io/badge/-Django-464646?style=flat-square&logo=Django)](https://www.djangoproject.com/) [![Django REST Framework](https://img.shields.io/badge/-Django%20REST%20Framework-464646?style=flat-square&logo=Django%20REST%20Framework)](https://www.django-rest-framework.org/) [![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-464646?style=flat-square&logo=PostgreSQL)](https://www.postgresql.org/) [![Nginx](https://img.shields.io/badge/-NGINX-464646?style=flat-square&logo=NGINX)](https://nginx.org/ru/) [![gunicorn](https://img.shields.io/badge/-gunicorn-464646?style=flat-square&logo=gunicorn)](https://gunicorn.org/) [![docker](https://img.shields.io/badge/-Docker-464646?style=flat-square&logo=docker)](https://www.docker.com/) [![GitHub%20Actions](https://img.shields.io/badge/-GitHub%20Actions-464646?style=flat-square&logo=GitHub%20actions)](https://github.com/features/actions) [![Yandex.Cloud](https://img.shields.io/badge/-Yandex.Cloud-464646?style=flat-square&logo=Yandex.Cloud)](https://cloud.yandex.ru/)
 
-### Проект API системы сбора отзывов и на различные произведения (кино, музыка, фильмы, книги, картины да всё что угодно) Проект позволяет публиковать отзывы к различным произведениям и выставлять им оценки, также пользователи могут комментировать опубликованные отзывы. Данный проект поможет людям делится собственным мнением, и помочь пользователям определится с тем хотят ли они тратить время на знакомство с каким-либо произведением. Создателям произведений так же будет интересно узнать об оценке их творчества. Всё это позволит не только найти друзей с общими интересами, но повысить планку качества для авторов любых произведений.
-
-# Установка Docker:
-
-### 1. Для начала запустите команду удаления старых версий Docker. Скорее всего их на вашем компьютере нет, но подстраховаться не помешает:
-> sudo apt remove docker docker-engine [docker.io](http://docker.io/) containerd runc
-
-#### Вывод будет примерно таким:
-> E: Unable to locate package docker-engine 
-
-### 2. Чтобы устанавливать новые версии пакетов и утилит обновите их список для менеджера пакетов ATP:
-> sudo apt update 
-
-### 3. Затем установите пакеты для работы через протокол https, это нужно для получения доступа к репозиторию докера:
-> sudo apt install \
-  > apt-transport-https \
-  > ca-certificates \
-  > curl \
-  > gnupg-agent \
-  > software-properties-common -y 
-  
-### 4. Добавьте ключ GPG для подтверждения подлинности в процессе установки:
-> curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-### 5. Добавьте репозиторий Docker в пакеты apt:
-> sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-
-### 6. Так как в APT был добавлен новый репозиторий, снова обновите индекс пакетов:
-> sudo apt update
-
-### 7. Установите Docker, а вместе с ним Docker Compose:
-> sudo apt install docker-ce docker-compose -y
-
-### 8. Проверьте, что Docker работает:
-> sudo systemctl status docker
-
-# Команды для запуска приложения.
-
-### Для запуска проекта выполните команду:
-#### docker-compose up -d
-
-#### В результате выполнения команды у вас развернётся проект, запущенный через gunicorn с базой данных postgres.
-
-### Проверить запущенные контейнеры:
-> docker container ls
-
-### Запустить контейнер:
-> docker container start <CONTAINER ID>
-  
-### Остановить контейнер:
-> docker container stop <CONTAINER ID>
-  
-
-# Выполнить миграции, создать суперпользователя и собрать статику:
-  
-### Выполнить миграции:
-> docker-compose exec web python manage.py migrate
-  
-### Создать суперпользователя:
-> docker-compose exec web python manage.py createsuperuser
-  
-### Собрать статиску:
-> docker-compose exec web python manage.py collectstatic --no-input 
+### Описание проекта:
+#### Проект API системы сбора отзывов и на различные произведения (кино, музыка, фильмы, книги, картины да всё что угодно) Проект позволяет публиковать отзывы к различным произведениям и выставлять им оценки, также пользователи могут комментировать опубликованные отзывы. Данный проект поможет людям делится собственным мнением, и помочь пользователям определится с тем хотят ли они тратить время на знакомство с каким-либо произведением. Создателям произведений так же будет интересно узнать об оценке их творчества. Всё это позволит не только найти друзей с общими интересами, но повысить планку качества для авторов любых произведений.
 
 
-# Теперь проект доступен по адресу http://localhost/. При этом номер порта указывать уже не надо: умный nginx принимает запросы на стандартном порте и перенаправляет их в приложение.
-=======
+# Запуск проекта на сервере:
 
-### 1. Для начала запустите команду удаления старых версий Docker. Скорее всего их на вашем компьютере нет, но подстраховаться не помешает:
-> sudo apt remove docker docker-engine [docker.io](http://docker.io/) containerd runc
+#### Склонировать репозиторий
+> https://github.com/AntonDMoskalev/Foodgram.git
 
-#### Вывод будет примерно таким:
-> E: Unable to locate package docker-engine 
+# Подготовка сервера:
 
-### 2. Чтобы устанавливать новые версии пакетов и утилит обновите их список для менеджера пакетов ATP:
-> sudo apt update 
+#### Обновить индекс пакетов APT
+>sudo apt update 
 
-### 3. Затем установите пакеты для работы через протокол https, это нужно для получения доступа к репозиторию докера:
-> sudo apt install \
-  > apt-transport-https \
-  > ca-certificates \
-  > curl \
-  > gnupg-agent \
-  > software-properties-common -y 
-  
-### 4. Добавьте ключ GPG для подтверждения подлинности в процессе установки:
-> curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+#### Обновите установленные в системе пакеты и установите обновления безопасности
+>sudo apt upgrade -y
 
-### 5. Добавьте репозиторий Docker в пакеты apt:
-> sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+#### Установить менеджер пакетов pip, утилиту для создания виртуального окружения venv, систему контроля версий git, чтобы клонировать ваш проект.
+>sudo apt install python3-pip python3-venv git -y
 
-### 6. Так как в APT был добавлен новый репозиторий, снова обновите индекс пакетов:
-> sudo apt update
+#### Установите на свой сервер Docker
+>sudo apt install docker.io
 
-### 7. Установите Docker, а вместе с ним Docker Compose:
-> sudo apt install docker-ce docker-compose -y
+#### Установите docker-compose
+>sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
-### 8. Проверьте, что Docker работает:
-> sudo systemctl status docker
+>sudo chmod +x /usr/local/bin/docker-compose
 
-# Команды для запуска приложения.
+#### Загрузите файлы docker-compose.yaml и nginx.conf на удалённый сервер.
+>scp /mnt/c/<Путь к проекту>/nginx/default.conf  <login>@<IP>:/home/<Имя>
+>scp /mnt/c/<Путь к проекту>/docker-compose.yaml  <login>@<IP>:/home/<Имя>
 
-### Установить переменные окружения в файле .env
-#### Указываем базу данных
-> DB_ENGINE=
-#### Имя базы данных
-> DB_NAME=
-#### Логин для подключения к базе данных
-> POSTGRES_USER=
-#### Пароль для подключения к БД
-> POSTGRES_PASSWORD=
-#### Название сервиса (контейнера)
-> DB_HOST=
-#### Порт для подключения к БД 
-> DB_PORT=
+#### Добавьте в Secrets GitHub переменные окружения:
+>DB_ENGINE=<django.db.backends.postgresql>
+>DB_NAME=<имя базы данных postgres>
+>DB_USER=<пользователь бд>
+>DB_PASSWORD=<пароль>
+>DB_HOST=<db>
+>DB_PORT=<5432>
 
-### Для запуска проекта выполните команду:
-> docker-compose up
+>DOCKER_PASSWORD=<пароль от DockerHub>
+>DOCKER_USERNAME=<имя пользователя>
 
-#### В результате выполнения команды у вас развернётся проект, запущенный через gunicorn с базой данных postgres.
+>DJANGO_SK=<секретный ключ проекта django>
 
-### Проверить запущенные контейнеры:
-> docker container ls
+>USER=<username для подключения к серверу>
+>HOST=<IP сервера>
+>PASSPHRASE=<пароль для сервера, если он установлен>
+>SSH_KEY=<ваш SSH ключ (для получения команда: cat ~/.ssh/id_rsa)>(Копировать полностью)
 
-### Запустить контейнер:
-> docker container start <CONTAINER ID>
-  
-### Остановить контейнер:
-> docker container stop <CONTAINER ID>
-  
+### Workflow состоит из трёх шагов:
+##### Тестирование проекта.
+##### Сборка и публикация образа.
+##### Автоматический деплой на сервер.
 
-# Выполнить миграции, создать суперпользователя и собрать статику:
-  
-### Выполнить миграции:
-> docker-compose exec web python manage.py migrate
-  
-### Создать суперпользователя:
-> docker-compose exec web python manage.py createsuperuser
-  
-### Собрать статиску:
-> docker-compose exec web python manage.py collectstatic --no-input 
+#### Собрать контейнеры на удалённом сервере
+>sudo docker-compose up -d --build
 
+#### Выполнить миграции, собрать статику, создать суперпользователя(По необходимости)
+>sudo docker-compose exec backend python manage.py migrate
 
-# Теперь проект доступен по адресу http://178.154.227.92/
+>sudo docker-compose exec backend python manage.py collectstatic
+
+>sudo docker-compose exec backend python manage.py createsuperuser
