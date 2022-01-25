@@ -1,5 +1,4 @@
 # API Ya Muddle Doodle Base
-## api_yamdb
 
 ![example workflow](https://github.com/AntonDMoskalev/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 ### Технологии:
