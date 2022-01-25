@@ -194,7 +194,7 @@
 ### Запуск проекта на сервере:
 
 #### Склонировать репозиторий
-> https://github.com/AntonDMoskalev/yamdb_final.git
+> https://github.com/AntonDMoskalev/yamdb.git
 
 ### Подготовка сервера:
 
